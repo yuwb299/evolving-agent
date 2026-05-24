@@ -49,13 +49,13 @@ class Coder:
 
     def run_tests(self) -> tuple[bool, str]:
         """运行测试，返回 (成功?, 输出)"""
-        test_dir = TARGET_DIR
         try:
             result = subprocess.run(
-                ["python3", "-m", "pytest", test_dir, "-v", "--tb=short", "-x"],
+                ["python3", "-m", "pytest", "-v", "--tb=short", "-x"],
                 capture_output=True,
                 text=True,
                 timeout=30,
+                cwd=TARGET_DIR,
             )
             output = result.stdout + result.stderr
             return result.returncode == 0, output[-2000:]  # 限制输出长度
