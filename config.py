@@ -2,6 +2,10 @@
 Evolving Agent 配置文件
 """
 import os
+from dotenv import load_dotenv
+
+# 加载 .env
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 # 模型配置 - DeepSeek V4 Pro
 MODEL_CONFIG = {
